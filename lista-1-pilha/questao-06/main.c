@@ -13,6 +13,7 @@ int main(void) {
     Stack *stack2 = init_stack();
     Stack *stack3 = init_stack();
 
+    push(stack1, ' ');
     while (*expression != '.') {
         push(stack1, *expression);
         expression++;
@@ -30,12 +31,6 @@ int main(void) {
         } else 
             push(stack2, caracter);
         caracter = pop(stack1);
-    }
-
-    caracter = pop(stack2);
-    while(caracter) {
-        push(stack3, caracter);
-        caracter = pop(stack2);
     }
 
     caracter = pop(stack3);
