@@ -4,48 +4,47 @@
 #include "stack.h"
 
 
-char *stack_to_string(Stack *stack);
+int verify_pattern(char x[], char y[]);
 
 int main(void) {
-    char *string1, *string2;
-    char expression[30] = "ABCDDCBADE";
-    int exp_length = strlen(expression);
-    int is_valid = 1;
+    Stack *p1 = init_stack();
+    char x[20],
+         y[20],
+         expression[30] = "ABCDDCBA";
+    int length_stack,
+        is_valid = 1;
 
-    Stack *stack1 = init_stack();
-    Stack *stack2 = init_stack();
 
-    if (exp_length % 2 != 0) {
+    for (int i = 0; i < strlen(expression); i++) {
+        push(p1, expression[i]);
+    }
+    length_stack = size_stack(p1);
+
+    if (length_stack % 2 != 0) {
         is_valid = 0;
     } else {
-        for (int x = 0, y = exp_length-1; x < (exp_length / 2); x++, y--) {
-            push(stack1, expression[x]);
-            push(stack2, expression[y]);
+        for (int i = 0; i < (length_stack / 2); i++) {
+            x[i] = pop(p1);
+            x[i+1] = '\0';
         }
-        string1 = stack_to_string(stack1);
-        string2 = stack_to_string(stack2);
-
-        if (strncmp(string1, string2, 30) != 0)
-            is_valid = 0;
+        for (int i = 0; i < (length_stack / 2); i++) {
+            y[i] = pop(p1);
+            y[i+1] = '\0';
+        }
     }
 
-    if (is_valid)
-        printf("A string está no padrão XY.\n");
+    if (is_valid && verify_pattern(x, y))
+        printf("A string está no padrão XY, X=%s, Y=%s.\n", x, y);
     else
         printf("A string não está no padrão XY.\n");
 
     return 0;
 }
 
-char *stack_to_string(Stack *stack) {
-    char value;
-    int index=0;
-    char *string = (char *)malloc(sizeof(char) * 30);
-
-    value = pop(stack);
-    while(value) {
-        string[index++] = value;
-        value = pop(stack);
+int verify_pattern(char x[], char y[]) {
+    for (int i = 0, j = strlen(x)-1; i < strlen(x); i++, j--) {
+        if (x[i] != y[j])
+            return 0;
     }
-    return string;
+    return 1;
 }
