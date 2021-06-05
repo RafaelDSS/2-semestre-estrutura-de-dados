@@ -17,16 +17,16 @@ int main(void) {
     push(stack, 4);
 
     stack_length = size_stack(stack);
+    smaller = top_stack(stack);
 
-    value = pop(stack);
-    smaller = value;
-    while(value) {
+    while(!is_empty(stack)) {
+        value = pop(stack);
+        
         if (value > bigger)
             bigger = value;
         if (value < smaller)
             smaller = value;
         sum += value;
-        value = pop(stack);
     }
 
     printf("O menor valor da pilha é: %d\n", smaller);

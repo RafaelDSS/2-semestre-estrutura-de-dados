@@ -4,7 +4,6 @@
 
 
 int main(void) {
-    int value;
     Stack *stack = init_stack();
 
     push(stack, 10);
@@ -16,10 +15,8 @@ int main(void) {
     pop(stack);
     pop(stack);
 
-    value = pop(stack);
-    while(value) {
-        printf("%d\n", value);
-        value = pop(stack);
-    }
+    while(!is_empty(stack))
+        printf("%d\n", pop(stack));
+
     return 0;
 }

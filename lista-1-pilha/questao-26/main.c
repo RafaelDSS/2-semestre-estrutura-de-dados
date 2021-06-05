@@ -41,44 +41,38 @@ int main(void) {
 }
 void decimal_to_bin(int decimal, Stack *p1) {
     int value;
-    int length_stack;
+    int stack_length;
 
     while (decimal > 0) {
         push(p1, (decimal % 2));
         decimal = decimal / 2;
     }
 
-    length_stack = size_stack(p1);
     printf("Binário: ");
-    for (int i = 0; i < length_stack; i++) {
-        value = pop(p1);
-        printf("%d", value);
-    }
+    while (!is_empty(p1))
+        printf("%d", pop(p1));
     printf("\n");
 }
 
 void decimal_to_oct(int decimal, Stack *p1) {
     int value;
-    int length_stack;
+    int stack_length;
 
     while (decimal > 0) {
         push(p1, (decimal % 8));
         decimal = decimal / 8;
     }
 
-    length_stack = size_stack(p1);
     printf("Octal: ");
-    for (int i = 0; i < length_stack; i++) {
-        value = pop(p1);
-        printf("%d", value);
-    }
+    while (!is_empty(p1))
+        printf("%d", pop(p1));
     printf("\n");
 
 }
 
 void decimal_to_hex(int decimal, Stack *p1) {
     int value;
-    int length_stack;
+    int stack_length;
 
     while (decimal > 0) {
         int res = decimal % 16;
@@ -90,11 +84,8 @@ void decimal_to_hex(int decimal, Stack *p1) {
             push(p1, (res + 87));
     }
 
-    length_stack = size_stack(p1);
     printf("Hexadecimal: 0x");
-    for (int i = 0; i < length_stack; i++) {
-        value = pop(p1);
-        printf("%c", value);
-    }
+    while (!is_empty(p1))
+        printf("%c", pop(p1));
     printf("\n");
 }

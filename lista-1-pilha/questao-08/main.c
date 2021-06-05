@@ -6,12 +6,13 @@
 
 int main(void) {
     Stack *stack = init_stack();
+    char caracter;
     int is_valid=1;
 
     char expressao[60] = "( ( ) ) – ( ( )( ) ) – ( ) ( )";
 
     for (int i=0; i < strlen(expressao); i++) {
-        char caracter = expressao[i];
+        caracter = expressao[i];
         if (caracter == '(')
             push(stack, caracter);
         else if (caracter == ')') {

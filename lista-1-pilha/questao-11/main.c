@@ -19,18 +19,11 @@ int main(void) {
 }
 
 void reverse_stack(Stack *p1) {
-    int value;
     Stack *p2 = init_stack();
 
-    value = pop(p1);
-    while(value) {
-        push(p2, value);
-        value = pop(p1);
-    }
+    while(!is_empty(p1))                                                                                                                                                                                                                                                                                                                                                                                                                                
+        push(p2, pop(p1));                                                 
 
-    value = pop(p2);
-    while(value) {
-        printf("%d\n", value);
-        value = pop(p2);
-    }
+    while(!is_empty(p2))
+        printf("%d\n", pop(p2));
 }

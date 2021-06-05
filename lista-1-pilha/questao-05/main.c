@@ -11,23 +11,23 @@ int main(void) {
     char x[20],
          y[20],
          expression[30] = "ABCDDCBA";
-    int length_stack,
+    int stack_length,
         is_valid = 1;
 
 
     for (int i = 0; i < strlen(expression); i++) {
         push(p1, expression[i]);
     }
-    length_stack = size_stack(p1);
+    stack_length = size_stack(p1);
 
-    if (length_stack % 2 != 0) {
+    if (stack_length % 2 != 0) {
         is_valid = 0;
     } else {
-        for (int i = 0; i < (length_stack / 2); i++) {
+        for (int i = 0; i < (stack_length / 2); i++) {
             x[i] = pop(p1);
             x[i+1] = '\0';
         }
-        for (int i = 0; i < (length_stack / 2); i++) {
+        for (int i = 0; i < (stack_length / 2); i++) {
             y[i] = pop(p1);
             y[i+1] = '\0';
         }

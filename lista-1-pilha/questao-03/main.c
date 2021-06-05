@@ -21,10 +21,8 @@ int main(void) {
     push(stack1, pop(stack3));
     push(stack1, pop(stack2));
 
-    value = pop(stack1);
-    while(value) {
-        printf("%d\n", value);
-        value = pop(stack1);
-    }
+    while (!is_empty(stack1))
+        printf("%d\n", pop(stack1));
+
     return 0;
 }

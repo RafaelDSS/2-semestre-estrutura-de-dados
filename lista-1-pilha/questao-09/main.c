@@ -3,8 +3,9 @@
 #include "stack.h"
 
 
+void sort_stack(Stack *stack);
+
 int main(void) {
-    int value, is_changed;;
     Stack *stack = init_stack();
 
     push(stack, 1);
@@ -15,26 +16,22 @@ int main(void) {
     push(stack, 65);
     push(stack, 24);
 
-    for (int i = 0; i < size_stack(stack); i++) {
-        is_changed = 0;
-        for (int j = 0; j < size_stack(stack)-1; j++) {
-            int aux;
+    sort_stack(stack);
 
-            if (stack->values[j] > stack->values[j+1]) {
-                aux = stack->values[j];
-                stack->values[j] = stack->values[j + 1];
-                stack->values[j + 1] = aux;
-                is_changed = 1;
-            }
-        }
-        if (!is_changed)
-            break;
-    }
+    while(!is_empty(stack))
+        printf("%d\n", pop(stack));
+}
 
-    value = pop(stack);
-    while(value) {
-        printf("%d\n", value);
-        value = pop(stack);
+void sort_stack(Stack *stack) {
+    Stack *aux_stack = init_stack();
+
+    while (!is_empty(stack)) {
+        int temp_value = pop(stack);
+
+        while (!is_empty(aux_stack) && top_stack(aux_stack) > temp_value)
+            push(stack, pop(aux_stack));
+        push(aux_stack, temp_value);
     }
-    return 0;
+    while (!is_empty(aux_stack))
+        push(stack, pop(aux_stack));
 }

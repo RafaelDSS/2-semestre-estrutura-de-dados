@@ -12,9 +12,8 @@ int main(void) {
     for (int i = 0; i < 10; i++) {
         Stack *stack = init_stack();
 
-        for (int j = 0; j < 4; j++) {
+        for (int j = 0; j < 4; j++)
             push(stack, rand() % 100);
-        }
         enqueue(queue, stack);
     }
 
@@ -22,9 +21,8 @@ int main(void) {
         Stack *stack = dequeue(queue);
 
         printf("dequeue() - Pilha %d:\n", i+1);
-        for (int j = 0; j < 4; j++) {
+        for (int j = 0; j < 4; j++)
             printf("\tpop() == %d\n", pop(stack));
-        }
     }    
     return 0;
 }

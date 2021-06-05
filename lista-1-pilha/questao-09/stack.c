@@ -24,6 +24,15 @@ int pop(Stack *stack) {
     return value;
 }
 
+int top_stack(Stack *stack) {
+    int value;
+
+    if (is_empty(stack))
+        return 0;
+    value = stack->values[stack->head];
+    return value;
+}
+
 void empty_stack(Stack *stack) {
     free(stack);
 }

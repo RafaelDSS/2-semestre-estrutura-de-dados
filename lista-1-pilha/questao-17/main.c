@@ -8,18 +8,14 @@
 int fibbonacci(int n);
 
 int main(void) {
-    int value;
     Stack *stack = init_stack();
     
-    for (int i = 0; i <= MAX_FIB; i++) {
+    for (int i = 0; i <= MAX_FIB; i++)
         push(stack, fibbonacci(i));
-    }
 
-    value = pop(stack);
-    while(value) {
-        printf("%d\n", value);
-        value = pop(stack);
-    }
+    while(!is_empty(stack))
+        printf("%d\n", pop(stack));
+
     return 0;
 }
 

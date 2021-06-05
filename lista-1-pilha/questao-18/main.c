@@ -9,7 +9,7 @@ int main(void) {
     Queue *queue_impar = init_queue();
     Stack *stack = init_stack();
 
-    int lenght_stack;
+    int stack_length;
     int input = 1;
 
     while (input) {
@@ -42,8 +42,8 @@ int main(void) {
             }
         }
     }
-    lenght_stack = size_stack(stack);
-    for (int i = 0; i < lenght_stack; i++) {
+    stack_length = size_stack(stack);
+    for (int i = 0; i < stack_length; i++) {
         printf("Stack - pop(): %d\n", pop(stack));
     }
     return 0;

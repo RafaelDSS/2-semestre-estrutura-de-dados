@@ -4,18 +4,16 @@
 
 
 int main(void) {
-    char value;
-    int qt_l = 0, 
-        qt_e = 0;
     Stack *stack = init_stack();
+    int qt_l = 0, qt_e = 0;
 
     push(stack, 'L');
     push(stack, 'L');
     push(stack, 'E');
     push(stack, 'E');
 
-    value = pop(stack);
-    while(value) {
+    while(!is_empty(stack)) {
+        char value = pop(stack);
 
         switch(value) {
             case 'L':
@@ -25,7 +23,6 @@ int main(void) {
                 qt_e++;
                 break;
         }
-        value = pop(stack);
     }
 
     if (qt_l == qt_e)

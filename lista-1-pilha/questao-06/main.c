@@ -19,25 +19,20 @@ int main(void) {
         expression++;
     }
 
-    caracter = pop(stack1);
-    while(caracter) {
+    while(!is_empty(stack1)) {
+        caracter = pop(stack1);
         if (caracter == ' ') {
-            caracter = pop(stack2);
-            while(caracter) {
-                push(stack3, caracter);
+            while(!is_empty(stack2)) {
                 caracter = pop(stack2);
+                push(stack3, caracter);
             }
             push(stack3, ' ');
         } else 
             push(stack2, caracter);
-        caracter = pop(stack1);
     }
 
-    caracter = pop(stack3);
-    while(caracter) {
-        printf("%c", caracter);
-        caracter = pop(stack3);
-    }
+    while(!is_empty(stack3))
+        printf("%c", pop(stack3));
     printf("\n");
 
     return 0;

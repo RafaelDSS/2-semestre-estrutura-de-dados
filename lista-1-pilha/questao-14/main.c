@@ -20,18 +20,11 @@ int main(void) {
 }
 
 void transfer_stack(Stack *p1, Stack *p2) {
-    int value;
     Stack *p3 = init_stack();
 
-    value = pop(p1);
-    while(value) {
-        push(p3, value);
-        value = pop(p1);
-    }
+    while(!is_empty(p1))
+        push(p3, pop(p1));
 
-    value = pop(p3);
-    while(value) {
-        push(p2, value);
-        value = pop(p3);
-    }
+    while(!is_empty(p3))
+        push(p2, pop(p3));
 }
