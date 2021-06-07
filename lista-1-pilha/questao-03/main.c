@@ -4,7 +4,6 @@
 
 
 int main(void) {
-    int value;
     Stack *stack1 = init_stack();
     Stack *stack2 = init_stack();
     Stack *stack3 = init_stack();
